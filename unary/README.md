@@ -14,6 +14,13 @@ called `GetDevice` that takes a `DeviceRequest` message and returns a `DeviceRes
 ### Sample call flow
 ![unary_rpc](gRPC.png)
 
+### prometheus metrics
+default metrics exposed by gRPC client
+![unary_rpc](grpc_client_metrics.png)
+
+default metrics exposed by gRPC server
+![unary_rpc](grpc_server_metrics.png)
+
 ### Wireshark Captures
 
 # Step 1: Client sends a HTTP/2 Header 
