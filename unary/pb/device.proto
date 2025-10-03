@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package pb;
+option go_package = "./unary/pb";
+
+// DeviceInfo defines set of rpcs to get device information.
+service DeviceInfo {
+  rpc GetDevice(DeviceRequest) returns (Device);
+}
+
+// DeviceRequest is the request message containing the device serial number.
+// Either 'serial' or 'mac_addr' must be provided to identify the device.
+message DeviceRequest {
+  oneof DeviceId {
+    string serial = 1;
+    string mac_addr = 2;
+  }
+}
+
+enum DeviceType {
+  UNKNOWN = 0;
+  SWITCH = 1;
+  AP = 2;
+  BGW = 3;
+  VPNC = 4;
+  MB = 5;
+}
+
+// Device is the response message containing device information.
+// The 'connected' field indicates whether the device is currently connected.
+message Device {
+  string serial = 1;
+  string mac_addr = 2;
+  DeviceType type = 3;
+  bool connected = 4;
+}
+
+
